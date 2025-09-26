@@ -365,7 +365,6 @@ const response = await axios.get(
     }
 
     }
-
   if (match === null) {
            const response = await axios.post (
             `https://api.thecatapi.com/v1/favourites`,
@@ -393,7 +392,19 @@ const response = await axios.get(
 
     }
 
+    async function getFavourites() {
+            const storeFavouritesResponse = await axios.get(
+           `https://api.thecatapi.com/v1/favourites?limit=20&sub_id=MY_FAVOURITES&order=DESC`,
+             {headers: {
+                'x-api-key': 'live_VDqagZZHtTedn5o6ecdXIIrHDJVqGosPUzZWY96pUE2cTEtdQbhmTlpriArLTyUi'
+              }} 
+);
+              return axios.get(`https://api.thecatapi.com/v1/favourites?limit=20&sub_id=MY_FAVOURITES&order=DESC`);
+    }
 
+
+
+    getFavourites()
 
 
 }
@@ -414,9 +425,20 @@ const response = await axios.get(
  */
 
 
-    function getFavourites() {
+//     async function getFavourites() {
+//             const storeFavouritesResponse = await axios.get(
+//            `https://api.thecatapi.com/v1/favourites?limit=20&sub_id=MY_FAVOURITES&order=DESC`,
+//              {headers: {
+//                 'x-api-key': 'live_VDqagZZHtTedn5o6ecdXIIrHDJVqGosPUzZWY96pUE2cTEtdQbhmTlpriArLTyUi'
+//               }} 
+// );
+//               return axios.get(`https://api.thecatapi.com/v1/favourites`);
+//     }
 
-    }
+//     getFavourites()
+
+
+
 /**
  * 10. Test your site, thoroughly!
  * - What happens when you try to load the Malayan breed?
