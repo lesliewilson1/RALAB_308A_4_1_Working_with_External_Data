@@ -232,9 +232,29 @@ const API_KEY = "live_VDqagZZHtTedn5o6ecdXIIrHDJVqGosPUzZWY96pUE2cTEtdQbhmTlpriA
         infoDump.append(newSection);
         // console.log(newSection)
 
-       duration()
-  });
 
+
+      
+  }
+
+);
+// PROGRESS BAR
+
+   const options = {
+    onDownloadProgress: function updateProgress(progressEvent) {
+      console.log(progressEvent);
+      if (progressEvent.total) {
+      const percentComplete = Math.floor((progressEvent.loaded / progressEvent.total)*100);
+      console.log(percentComplete+ "%");
+
+      } else {
+        console.log(`It's broken yall`);
+      }
+    }
+}
+axios.get(`https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${breedSelect.value}&api_key=${API_KEY}`, options)
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
 
 /**
  * 5. Add axios interceptors to log the time between request and response to the console.
@@ -242,42 +262,6 @@ const API_KEY = "live_VDqagZZHtTedn5o6ecdXIIrHDJVqGosPUzZWY96pUE2cTEtdQbhmTlpriA
  * - Add a console.log statement to indicate when requests begin.
  * - As an added challenge, try to do this on your own without referencing the lesson material.
  */
-
-function duration() {
-  axios.interceptors.request.use(request => {
-    request.metadata = request.metadata || {};
-    request.metadata.startTime = new Date().getTime();
-    return request;
-
-  }
-);
-  
-  axios.interceptors.response.use(
-    (response) => {
-        response.config.metadata.endTime = new Date().getTime();
-        response.durationInMS = response.config.metadata.endTime - response.config.metadata.startTime;
-        return response;
-    },
-    (error) => {
-        error.config.metadata.endTime = new Date().getTime();
-        error.durationInMS = error.config.metadata.endTime - error.config.metadata.startTime;
-        throw error;
-  });
-  (async () => {
-    const url = `https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${breedSelect.value}&api_key=${API_KEY}`,
-  
-   response = await axios(url);
-    console.log(`Request took ${response.durationInMS} milliseconds.`);
-    // console.log(data);
-  })();
-
- 
-}
-
-duration()
-
-
-progressBar.style.width = "0%";
 
 
 /**
@@ -295,6 +279,49 @@ progressBar.style.width = "0%";
  *   once or twice per request to this API. This is still a concept worth familiarizing yourself
  *   with for future projects.
  */
+//--------------------------------------Notes on Interceptors---------------------------------//
+//Line 286 if(request.metadata){}
+//else {request.metadata = {}} - if there isnt a value we can't give it a start time
+//new date().getTime() - MDN Documentation
+//interceptor when we get a requst stop then continue
+//--------------------------------------Notes on Interceptors---------------------------------//
+  axios.interceptors.request.use(request => {
+    console.log(request);
+    request.metadata = request.metadata || {};
+    request.metadata.startTime = new Date().getTime();
+    progressBar.style.width = "0%";
+    return request;
+
+  }
+);
+
+//--------------------------------------Notes on Interceptors---------------------------------//
+  //when we get something back (response) axios says stop do the bottom and continue
+//--------------------------------------Notes on Interceptors---------------------------------//
+
+  axios.interceptors.response.use(
+    (response) => {
+        response.config.metadata.endTime = new Date().getTime();
+        response.durationInMS = response.config.metadata.endTime - response.config.metadata.startTime;
+        progressBar.style.width = "100%";
+
+        return response;
+    },
+    (error) => {
+        error.config.metadata.endTime = new Date().getTime();
+        error.durationInMS = error.config.metadata.endTime - error.config.metadata.startTime;
+        throw error;
+  });
+  (async () => {
+    const url = `https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${breedSelect.value}&api_key=${API_KEY}`,
+  
+   response = await axios(url);
+    console.log(`Request took ${response.durationInMS} milliseconds.`);
+    // console.log(data);
+  })();
+
+
+
 
 
 
@@ -314,9 +341,69 @@ progressBar.style.width = "0%";
  *   you delete that favourite using the API, giving this function "toggle" functionality.
  * - You can call this function by clicking on the heart at the top right of any image.
  */
+
+//NEED TO DELETE PROBABLY A FUNCTION
 export async function favourite(imgId) {
   // your code here
+  const favourites = {
+    image_id: imgId,
+    sub_id: "MY_FAVOURITES"
+  };
+
+
+
+  const response = await axios.post (
+            `https://api.thecatapi.com/v1/favourites`,
+            favourites,
+            {
+              headers: {
+                'x-api-key': 'live_VDqagZZHtTedn5o6ecdXIIrHDJVqGosPUzZWY96pUE2cTEtdQbhmTlpriArLTyUi'
+              }
+            }
+  );
+  
+  const favGroupResponse = response;
+  const favGroup = favGroupResponse.data;
+
+  let match = null;
+  for (let i = 0; i < favGroup.length; i++) {
+    const fav = favGroup[i];
+    if (fav.image_id === imgId) {
+      match = fav;
+    }
+
+    }
+
+  if (favGroup === true) {
+          console.log(response)
+  } else {
+     {const favouriteId = response.data.id;
+
+    await axios.delete (
+            `https://api.thecatapi.com/v1/favourites/${favouriteId}`,
+            {
+              headers: {
+                'x-api-key': 'live_VDqagZZHtTedn5o6ecdXIIrHDJVqGosPUzZWY96pUE2cTEtdQbhmTlpriArLTyUi'
+              }
+            }
+  );
+
+  
+              console.log(favouriteId);
+  
+    }
+
+    }
+
+
+
+
 }
+
+//--------------------------------------Notes on Axios---------------------------------//
+//CRUD - CREATE, READ, UPDATE, DELETE - SOON
+//create- post // delete - delete that post if-> if is is in fav post it if not in post in if function
+//--------------------------------------Notes on Axios---------------------------------//
 
 /**
  * 9. Test your favourite() function by creating a getFavourites() function.
@@ -328,6 +415,10 @@ export async function favourite(imgId) {
  *    repeat yourself in this section.
  */
 
+
+    function getFavourites () {
+
+    }
 /**
  * 10. Test your site, thoroughly!
  * - What happens when you try to load the Malayan breed?
