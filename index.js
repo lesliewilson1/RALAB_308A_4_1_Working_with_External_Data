@@ -103,7 +103,7 @@ const API_KEY = "live_VDqagZZHtTedn5o6ecdXIIrHDJVqGosPUzZWY96pUE2cTEtdQbhmTlpriA
 
 
   
-
+//========================================================Scrap to refer===========================================================//
                                                                                 //   breedSelect.addEventListener ("change", async () => {
                                                                                 //   const selectedBreed = await fetch (`https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${breedSelect.value}&api_key=${API_KEY}`);
                                                                                 //   console.log(`https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${breedSelect.value}&api_key=${API_KEY}`)
@@ -151,7 +151,7 @@ const API_KEY = "live_VDqagZZHtTedn5o6ecdXIIrHDJVqGosPUzZWY96pUE2cTEtdQbhmTlpriA
                                                                               //         console.log(selectBreed)
 
                                                                               // });
-    
+//======================================================Scrap to refer===========================================================//
 
 
 /**
@@ -378,7 +378,7 @@ const response = await axios.get(
   );
           console.log("Favourite cat ₍^. .^₎⟆", response.data);
   } else {
-     {const favouriteId = match;
+     {const favouriteId = match.id;
 
     await axios.delete (
             `https://api.thecatapi.com/v1/favourites/${favouriteId}`,
@@ -414,7 +414,7 @@ const response = await axios.get(
  */
 
 
-    function getFavourites () {
+    function getFavourites() {
 
     }
 /**
