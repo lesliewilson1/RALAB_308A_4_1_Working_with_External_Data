@@ -238,18 +238,13 @@ const API_KEY = "live_VDqagZZHtTedn5o6ecdXIIrHDJVqGosPUzZWY96pUE2cTEtdQbhmTlpriA
   }
 
 );
-// PROGRESS BAR
+// Progress Bar
 
    const options = {
     onDownloadProgress: function updateProgress(progressEvent) {
-      console.log(progressEvent);
-      if (progressEvent.total) {
+      //console.log(progressEvent);
       const percentComplete = Math.floor((progressEvent.loaded / progressEvent.total)*100);
-      console.log(percentComplete+ "%");
-
-      } else {
-        console.log(`It's broken yall`);
-      }
+      
     }
 }
 axios.get(`https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${breedSelect.value}&api_key=${API_KEY}`, options)
@@ -285,8 +280,8 @@ axios.get(`https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${breed
 //new date().getTime() - MDN Documentation
 //interceptor when we get a requst stop then continue
 //--------------------------------------Notes on Interceptors---------------------------------//
-  axios.interceptors.request.use(request => {
-    console.log(request);
+axios.interceptors.request.use(request => {
+    //console.log(request);
     request.metadata = request.metadata || {};
     request.metadata.startTime = new Date().getTime();
     progressBar.style.width = "0%";
@@ -342,7 +337,7 @@ axios.get(`https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${breed
  * - You can call this function by clicking on the heart at the top right of any image.
  */
 
-//NEED TO DELETE PROBABLY A FUNCTION
+//Created another function
 export async function favourite(imgId) {
   // your code here
   const favourites = {
@@ -351,8 +346,28 @@ export async function favourite(imgId) {
   };
 
 
+const response = await axios.get(
+  `https://api.thecatapi.com/v1/favourites`,
+    {headers: {
+                'x-api-key': 'live_VDqagZZHtTedn5o6ecdXIIrHDJVqGosPUzZWY96pUE2cTEtdQbhmTlpriArLTyUi'
+              }} 
+);
+ 
+  
+  const favGroupResponse = response;
+  const favGroup = favGroupResponse.data;
 
-  const response = await axios.post (
+  let match = null;
+  for (let i = 0; i < favGroup.length; i++) {
+    const fav = favGroup[i];
+    if (fav["image_id"] === imgId) {
+      match = fav;
+    }
+
+    }
+
+  if (match === null) {
+           const response = await axios.post (
             `https://api.thecatapi.com/v1/favourites`,
             favourites,
             {
@@ -361,23 +376,9 @@ export async function favourite(imgId) {
               }
             }
   );
-  
-  const favGroupResponse = response;
-  const favGroup = favGroupResponse.data;
-
-  let match = null;
-  for (let i = 0; i < favGroup.length; i++) {
-    const fav = favGroup[i];
-    if (fav.image_id === imgId) {
-      match = fav;
-    }
-
-    }
-
-  if (favGroup === true) {
-          console.log(response)
+          console.log("Favourite cat ₍^. .^₎⟆", response.data);
   } else {
-     {const favouriteId = response.data.id;
+     {const favouriteId = match;
 
     await axios.delete (
             `https://api.thecatapi.com/v1/favourites/${favouriteId}`,
@@ -387,10 +388,7 @@ export async function favourite(imgId) {
               }
             }
   );
-
-  
-              console.log(favouriteId);
-  
+            console.log("Unfavourited cat", favouriteId);
     }
 
     }
