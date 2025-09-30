@@ -1,5 +1,9 @@
-import { appendCarousel, clear, createCarouselItem, start } from "./Carousel.js";
-
+import {
+  appendCarousel,
+  clear,
+  createCarouselItem,
+  start,
+} from "./Carousel.js";
 
 // import axios from "axios";
 
@@ -24,7 +28,6 @@ const API_KEY = "live_VDqagZZHtTedn5o6ecdXIIrHDJVqGosPUzZWY96pUE2cTEtdQbhmTlpriA
  * This function should execute immediately.
  */
 
-
 //  async function initialLoad() {
 //        const response = await fetch("https://api.thecatapi.com/v1/breeds")
 //        const data = await response.json();
@@ -41,12 +44,9 @@ const API_KEY = "live_VDqagZZHtTedn5o6ecdXIIrHDJVqGosPUzZWY96pUE2cTEtdQbhmTlpriA
 
 //       }
 
-      
 //  }
 
-
 // initialLoad()
-
 
 /**
  * 2. Create an event handler for breedSelect that does the following:
@@ -63,96 +63,79 @@ const API_KEY = "live_VDqagZZHtTedn5o6ecdXIIrHDJVqGosPUzZWY96pUE2cTEtdQbhmTlpriA
  * - Add a call to this function to the end of your initialLoad function above to create the initial carousel.
  */
 
-   
-  //   breedSelect.addEventListener("change", async (e) => {
-  //   e.preventDefault();
-  //   clear();
-  //   const breedId = e.target.value;
-  //   const breedName = e.target.textContent;
-  //   console.log(breedId);
-  //   console.log(e.target);
-  //   const selectBreed = await fetch(
-  //     `https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${breedId}&api_key=${API_KEY}`
-  //   );
-  //   const data = await selectBreed.json();
-  //   console.log(data)
-    
-  //   data.forEach((element) => {
-  //     const imgUrl = element.url;
-  //     const imgId = element.id;
+//   breedSelect.addEventListener("change", async (e) => {
+//   e.preventDefault();
+//   clear();
+//   const breedId = e.target.value;
+//   const breedName = e.target.textContent;
+//   console.log(breedId);
+//   console.log(e.target);
+//   const selectBreed = await fetch(
+//     `https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${breedId}&api_key=${API_KEY}`
+//   );
+//   const data = await selectBreed.json();
+//   console.log(data)
 
-  //     const item = createCarouselItem(imgUrl, breedName, imgId);
-  //     appendCarousel(item);
+//   data.forEach((element) => {
+//     const imgUrl = element.url;
+//     const imgId = element.id;
 
+//     const item = createCarouselItem(imgUrl, breedName, imgId);
+//     appendCarousel(item);
 
-      
-  //   });
+//   });
 
+//       const newSection = document.createElement('section');
+//       let info = data[0].breeds[0];
+//       newSection.innerHTML = `<strong>Temperament:</strong> ${info.temperament}`;
+//       infoDump.innerHTML = "";
+//       // console.log(info);
+//       // newSection.textContent = info;
 
-  //       const newSection = document.createElement('section');
-  //       let info = data[0].breeds[0];
-  //       newSection.innerHTML = `<strong>Temperament:</strong> ${info.temperament}`;
-  //       infoDump.innerHTML = "";
-  //       // console.log(info);
-  //       // newSection.textContent = info;
-        
-  //       infoDump.append(newSection);
-  //       // console.log(newSection)
-       
-  // });
+//       infoDump.append(newSection);
+//       // console.log(newSection)
 
+// });
 
-  
 //========================================================Scrap to refer===========================================================//
-                                                                                //   breedSelect.addEventListener ("change", async () => {
-                                                                                //   const selectedBreed = await fetch (`https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${breedSelect.value}&api_key=${API_KEY}`);
-                                                                                //   console.log(`https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${breedSelect.value}&api_key=${API_KEY}`)
-                                                                                //   const catData = await selectedBreed.json();
-                                                                                //   console.log(catData);
-                                                                                // });
+//   breedSelect.addEventListener ("change", async () => {
+//   const selectedBreed = await fetch (`https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${breedSelect.value}&api_key=${API_KEY}`);
+//   console.log(`https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${breedSelect.value}&api_key=${API_KEY}`)
+//   const catData = await selectedBreed.json();
+//   console.log(catData);
+// });
 
+// async function breedSelect() {
+//        const breedSelectResponse = await fetch("https://api.thecatapi.com/v1/breeds")
+//        const breedData = await response.json();
+//        //console.log(data);
 
+//       for (let i = 0; i < breedData.length; i++) {
+//         const breedSelectHandle = document.createElement("option");
+//         const breed = data[i];
+//         console.log(breed);
+//         option.setAttribute("value", breed.id);
 
+//         option.textContent = breed.name;
+//         breedSelect.appendChild(option);
 
+//       }
 
-                                                                        // async function breedSelect() {
-                                                                        //        const breedSelectResponse = await fetch("https://api.thecatapi.com/v1/breeds")
-                                                                        //        const breedData = await response.json();
-                                                                        //        //console.log(data);
+//}
 
-                                                                        //       for (let i = 0; i < breedData.length; i++) {
-                                                                        //         const breedSelectHandle = document.createElement("option");
-                                                                        //         const breed = data[i];
-                                                                        //         console.log(breed);
-                                                                        //         option.setAttribute("value", breed.id);
+// breedSelectHandle.addEventListener("click", handleBreedChange);
 
-                                                                        //         option.textContent = breed.name;
-                                                                        //         breedSelect.appendChild(option);
+//     async function breedCarousel() {
+// }
 
-                                                                        //       }
+// breedSelectHandle.addEventListener("click", initialLoad()) {
 
-                                                                              
-                                                                        //}
+// breedSelect.addEventListener("click", async function() {
+//         const selectBreed = await fetch ("https://api.thecatapi.com/v1/breeds" + "/api")
+//         console.log(selectBreed)
 
-
-
-                                                                          // breedSelectHandle.addEventListener("click", handleBreedChange);
-
-                                                                              //     async function breedCarousel() {
-                                                                                  // }
-
-
-                                                                                      // breedSelectHandle.addEventListener("click", initialLoad()) {
-
-
-
-                                                                              // breedSelect.addEventListener("click", async function() {
-                                                                              //         const selectBreed = await fetch ("https://api.thecatapi.com/v1/breeds" + "/api")
-                                                                              //         console.log(selectBreed)
-
-                                                                              // });
+// });
 //======================================================Scrap to refer===========================================================//
-
 
 /**
  * 3. Fork your own sandbox, creating a new one named "JavaScript Axios Lab."
@@ -167,89 +150,78 @@ const API_KEY = "live_VDqagZZHtTedn5o6ecdXIIrHDJVqGosPUzZWY96pUE2cTEtdQbhmTlpriA
  *   send it manually with all of your requests! You can also set a default base URL!
  */
 
- async function initialLoad() {
-       const response = await axios ({
-            method: `get`,
-            url: `https://api.thecatapi.com/v1/breeds`
-       }) 
-       const data = response.data;
-       //console.log(data);
+async function initialLoad() {
+  const response = await axios({
+    method: `get`,
+    url: `https://api.thecatapi.com/v1/breeds`,
+  });
+  const data = response.data;
+  //console.log(data);
 
-      for (let i = 0; i < data.length; i++) {
-        const option = document.createElement("option");
-        const breed = data[i];
-        //console.log(breed);
-        option.setAttribute("value", breed.id);
+  for (let i = 0; i < data.length; i++) {
+    const option = document.createElement("option");
+    const breed = data[i];
+    //console.log(breed);
+    option.setAttribute("value", breed.id);
 
-        option.textContent = breed.name;
-        breedSelect.appendChild(option);
-
-      }
-
-      
- }
- initialLoad();
-
-    breedSelect.addEventListener("change", async (e) => {
-    e.preventDefault();
-    clear();
-    const breedId = e.target.value;
-    const breedName = e.target.textContent;
-    console.log(breedId);
-    console.log(e.target);
-    const selectBreed = await axios({
-
-        method: 'get',
-        url: `https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${breedId}&api_key=${API_KEY}`
-        
-    }
-    ) 
-
-    console.log(selectBreed);
-
-    const data = selectBreed.data;
-    console.log(data)
-    
-    data.forEach((element) => {
-      const imgUrl = element.url;
-      const imgId = element.id;
-
-      const item = createCarouselItem(imgUrl, breedName, imgId);
-      appendCarousel(item);
-
-
-      
-    });
-
-
-        const newSection = document.createElement('section');
-        let info = data[0].breeds[0];
-        newSection.innerHTML = `<strong>Temperament:</strong> ${info.temperament}`;
-        infoDump.innerHTML = "";
-        // console.log(info);
-        // newSection.textContent = info;
-        
-        infoDump.append(newSection);
-        // console.log(newSection)
-
-
-
-      
+    option.textContent = breed.name;
+    breedSelect.appendChild(option);
   }
+}
+initialLoad();
 
-);
+breedSelect.addEventListener("change", async (e) => {
+  e.preventDefault();
+  clear();
+  const breedId = e.target.value;
+  const breedName = e.target.textContent;
+  console.log(breedId);
+  console.log(e.target);
+  const selectBreed = await axios({
+    method: "get",
+    url: `https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${breedId}&api_key=${API_KEY}`,
+  });
+
+  console.log(selectBreed);
+
+  const data = selectBreed.data;
+  console.log(data);
+
+  data.forEach((element) => {
+    const imgUrl = element.url;
+    const imgId = element.id;
+
+    const item = createCarouselItem(imgUrl, breedName, imgId);
+    appendCarousel(item);
+  });
+
+  const newSection = document.createElement("section");
+  let info = data[0].breeds[0];
+  newSection.innerHTML = `<strong>Temperament:</strong> ${info.temperament}`;
+  infoDump.innerHTML = "";
+  // console.log(info);
+  // newSection.textContent = info;
+
+  infoDump.append(newSection);
+  // console.log(newSection)
+});
 // Progress Bar
 
-   const options = {
-    onDownloadProgress: function updateProgress(progressEvent) {
-      //console.log(progressEvent);
-      const percentComplete = Math.floor((progressEvent.loaded / progressEvent.total)*100);
-      
-    }
-}
-axios.get(`https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${breedSelect.value}&api_key=${API_KEY}`, options)
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
+const options = {
+  onDownloadProgress: function updateProgress(progressEvent) {
+    //console.log(progressEvent);
+    const percentComplete = Math.floor(
+      (progressEvent.loaded / progressEvent.total) * 100
+    );
+  },
+};
+axios
+  .get(
+    `https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${breedSelect.value}&api_key=${API_KEY}`,
+    options
+  )
+  .then((res) => console.log(res))
+  .catch((err) => console.log(err));
 
 /**
  * 5. Add axios interceptors to log the time between request and response to the console.
@@ -257,7 +229,6 @@ axios.get(`https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${breed
  * - Add a console.log statement to indicate when requests begin.
  * - As an added challenge, try to do this on your own without referencing the lesson material.
  */
-
 
 /**
  * 6. Next, we'll create a progress bar to indicate the request is in progress.
@@ -280,45 +251,40 @@ axios.get(`https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${breed
 //new date().getTime() - MDN Documentation
 //interceptor when we get a requst stop then continue
 //--------------------------------------Notes on Interceptors---------------------------------//
-axios.interceptors.request.use(request => {
-    //console.log(request);
-    request.metadata = request.metadata || {};
-    request.metadata.startTime = new Date().getTime();
-    progressBar.style.width = "0%";
-    return request;
+axios.interceptors.request.use((request) => {
+  //console.log(request);
+  request.metadata = request.metadata || {};
+  request.metadata.startTime = new Date().getTime();
+  progressBar.style.width = "0%";
+  return request;
+});
 
+//--------------------------------------Notes on Interceptors---------------------------------//
+//when we get something back (response) axios says stop do the bottom and continue
+//--------------------------------------Notes on Interceptors---------------------------------//
+
+axios.interceptors.response.use(
+  (response) => {
+    response.config.metadata.endTime = new Date().getTime();
+    response.durationInMS =
+      response.config.metadata.endTime - response.config.metadata.startTime;
+    progressBar.style.width = "100%";
+
+    return response;
+  },
+  (error) => {
+    error.config.metadata.endTime = new Date().getTime();
+    error.durationInMS =
+      error.config.metadata.endTime - error.config.metadata.startTime;
+    throw error;
   }
 );
-
-//--------------------------------------Notes on Interceptors---------------------------------//
-  //when we get something back (response) axios says stop do the bottom and continue
-//--------------------------------------Notes on Interceptors---------------------------------//
-
-  axios.interceptors.response.use(
-    (response) => {
-        response.config.metadata.endTime = new Date().getTime();
-        response.durationInMS = response.config.metadata.endTime - response.config.metadata.startTime;
-        progressBar.style.width = "100%";
-
-        return response;
-    },
-    (error) => {
-        error.config.metadata.endTime = new Date().getTime();
-        error.durationInMS = error.config.metadata.endTime - error.config.metadata.startTime;
-        throw error;
-  });
-  (async () => {
-    const url = `https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${breedSelect.value}&api_key=${API_KEY}`,
-  
-   response = await axios(url);
-    console.log(`Request took ${response.durationInMS} milliseconds.`);
-    // console.log(data);
-  })();
-
-
-
-
-
+(async () => {
+  const url = `https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${breedSelect.value}&api_key=${API_KEY}`,
+    response = await axios(url);
+  console.log(`Request took ${response.durationInMS} milliseconds.`);
+  // console.log(data);
+})();
 
 /**
  * 7. As a final element of progress indication, add the following to your axios interceptors:
@@ -342,18 +308,16 @@ export async function favourite(imgId) {
   // your code here
   const favourites = {
     image_id: imgId,
-    sub_id: "MY_FAVOURITES"
+    sub_id: "MY_FAVOURITES",
   };
 
+  const response = await axios.get(`https://api.thecatapi.com/v1/favourites`, {
+    headers: {
+      "x-api-key":
+        "live_VDqagZZHtTedn5o6ecdXIIrHDJVqGosPUzZWY96pUE2cTEtdQbhmTlpriArLTyUi",
+    },
+  });
 
-const response = await axios.get(
-  `https://api.thecatapi.com/v1/favourites`,
-    {headers: {
-                'x-api-key': 'live_VDqagZZHtTedn5o6ecdXIIrHDJVqGosPUzZWY96pUE2cTEtdQbhmTlpriArLTyUi'
-              }} 
-);
- 
-  
   const favGroupResponse = response;
   const favGroup = favGroupResponse.data;
 
@@ -363,52 +327,40 @@ const response = await axios.get(
     if (fav["image_id"] === imgId) {
       match = fav;
     }
-
-    }
+  }
   if (match === null) {
-           const response = await axios.post (
-            `https://api.thecatapi.com/v1/favourites`,
-            favourites,
-            {
-              headers: {
-                'x-api-key': 'live_VDqagZZHtTedn5o6ecdXIIrHDJVqGosPUzZWY96pUE2cTEtdQbhmTlpriArLTyUi'
-              }
-            }
-  );
-          console.log("Favourite cat ₍^. .^₎⟆", response.data);
+    const response = await axios.post(
+      `https://api.thecatapi.com/v1/favourites`,
+      favourites,
+      {
+        headers: {
+          "x-api-key":
+            "live_VDqagZZHtTedn5o6ecdXIIrHDJVqGosPUzZWY96pUE2cTEtdQbhmTlpriArLTyUi",
+        },
+      }
+    );
+    console.log("Favourite cat ₍^. .^₎⟆", response.data);
   } else {
-     {const favouriteId = match.id;
+    {
+      const favouriteId = match.id;
 
-    await axios.delete (
-            `https://api.thecatapi.com/v1/favourites/${favouriteId}`,
-            {
-              headers: {
-                'x-api-key': 'live_VDqagZZHtTedn5o6ecdXIIrHDJVqGosPUzZWY96pUE2cTEtdQbhmTlpriArLTyUi'
-              }
-            }
-  );
-            console.log("Unfavourited cat", favouriteId);
+      await axios.delete(
+        `https://api.thecatapi.com/v1/favourites/${favouriteId}`,
+        {
+          headers: {
+            "x-api-key":
+              "live_VDqagZZHtTedn5o6ecdXIIrHDJVqGosPUzZWY96pUE2cTEtdQbhmTlpriArLTyUi",
+          },
+        }
+      );
+      console.log("Unfavourited cat", favouriteId);
     }
-
-    }
-
-    async function getFavourites() {
-            const storeFavouritesResponse = await axios.get(
-           `https://api.thecatapi.com/v1/favourites?limit=20&sub_id=MY_FAVOURITES&order=DESC`,
-             {headers: {
-                'x-api-key': 'live_VDqagZZHtTedn5o6ecdXIIrHDJVqGosPUzZWY96pUE2cTEtdQbhmTlpriArLTyUi'
-              }} 
-);
-              return axios.get(`https://api.thecatapi.com/v1/favourites?limit=20&sub_id=MY_FAVOURITES&order=DESC`);
-    }
+  }
 
 
 
-    getFavourites()
-
-
+  
 }
-
 //--------------------------------------Notes on Axios---------------------------------//
 //CRUD - CREATE, READ, UPDATE, DELETE - SOON
 //create- post // delete - delete that post if-> if is is in fav post it if not in post in if function
@@ -424,20 +376,74 @@ const response = await axios.get(
  *    repeat yourself in this section.
  */
 
+  async function getFavourites() {
+   
+    const favouriteResponse = await axios.post(
+      `https://api.thecatapi.com/v1/favourites`,
+      favourites,
+      {
+        headers: {
+          "x-api-key":
+            "live_VDqagZZHtTedn5o6ecdXIIrHDJVqGosPUzZWY96pUE2cTEtdQbhmTlpriArLTyUi",
+        },
+      }
+    );
+
+    return axios.get(
+      `https://api.thecatapi.com/v1/favourites`
+    );
+  }
+  const [storeFavouritesResponse] = await Promise.all([getFavourites()]);
+
+getFavourites();
+
+getFavouritesBtn.addEventListener("click", async (e) => {
+  e.preventDefault();
+  clear();
+  const breedId = e.target.value;
+  const breedName = e.target.textContent;
+  console.log(breedId);
+  console.log(e.target);
+  const selectBreed = await axios({
+    method: "get",
+    url: `https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${breedId}&api_key=${API_KEY}`,
+  });
+
+  console.log(selectBreed);
+
+  const data = selectBreed.data;
+  console.log(data);
+
+  data.forEach((element) => {
+    const imgUrl = element.url;
+    const imgId = element.id;
+
+    const item = createCarouselItem(imgUrl, breedName, imgId);
+    appendCarousel(item);
+  });
+
+  // const newSection = document.createElement("section");
+  let info = data[0].breeds[0];
+  // newSection.innerHTML = `<strong>Temperament:</strong> ${info.temperament}`;
+  infoDump.innerHTML = "";
+  // console.log(info);
+  // newSection.textContent = info;
+
+  infoDump.append(getFavouritesBtn);
+  // console.log(newSection)
+});
 
 //     async function getFavourites() {
 //             const storeFavouritesResponse = await axios.get(
 //            `https://api.thecatapi.com/v1/favourites?limit=20&sub_id=MY_FAVOURITES&order=DESC`,
 //              {headers: {
 //                 'x-api-key': 'live_VDqagZZHtTedn5o6ecdXIIrHDJVqGosPUzZWY96pUE2cTEtdQbhmTlpriArLTyUi'
-//               }} 
+//               }}
 // );
 //               return axios.get(`https://api.thecatapi.com/v1/favourites`);
 //     }
 
 //     getFavourites()
-
-
 
 /**
  * 10. Test your site, thoroughly!
@@ -447,5 +453,5 @@ const response = await axios.get(
  *   your code should account for this.
  *  Using CAT API you can display different kinds of data link breeds by using the & to combine
  * Create --> create document.id
- * 
+ *
  */
